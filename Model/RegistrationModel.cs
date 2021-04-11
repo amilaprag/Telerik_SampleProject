@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Telerik_SampleProject.Model
 {
+    [Table("RegistrationMaster")]
     public class RegistrationModel
     {
         [Key]
