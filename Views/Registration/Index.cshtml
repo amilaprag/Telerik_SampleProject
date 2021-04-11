@@ -1,14 +1,14 @@
 ﻿
 
-<div class="demo-section k-content">
+<div class="k-content">
     <div id="validation-success"></div>
     @(Html.Kendo().Form<Telerik_SampleProject.Model.RegistrationModel>()
-        .Name("exampleForm")
+        .Name("Registration_Form")
         .HtmlAttributes(new { action = "Index", method = "POST" })
         .Validatable(v =>
         {
             v.ValidateOnBlur(true);
-            v.ValidationSummary(vs => vs.Enable(false));
+            v.ValidationSummary(vs => vs.Enable(true));
         })
         .Items(items =>
         {
@@ -24,11 +24,74 @@
                         .Field(f => f.Name)
                         .Label(l => l.Text("Last Name:"));
                     i.Add()
-                        .Field(f => f.RegDate)
-                        .Label(l => l.Text("Email:"));
-                    i.Add()
                      .Field(f => f.Age)
-                     .Label(l => l.Text("Email:"));
+                     .Label(l => l.Text("Age:"));
+                    i.Add()
+                       .Field(f => f.RegDate)
+                       .Label(l => l.Text("DateTimePicker:").Optional(true))
+                       .Editor(e => e.DateTimePicker()
+                           .HtmlAttributes(new { style = "width: 100%", title = "datetimepicker" })
+                           .DateInput()
+                       );
+                    i.Add()
+                     .Field(f => f.CivilStatus)
+                     .Label(l => l.Text("RadioGroup:"))
+                     .Editor(e =>
+                     {
+                         e.RadioGroup()
+                         .LabelPosition(RadioGroupLabelPosition.Before)
+                         .Layout(RadioGroupLayout.Horizontal)
+                         .Items(i =>
+                         {
+                             i.Add().Label("Yes").Value("True");
+                             i.Add().Label("No").Value("False");
+                         });
+                     });
+                    i.Add()
+                     .Field(f => f.Langudage)
+                     .Label(l => l.Text("CheckBoxGroup:"))
+                     .Editor(e =>
+                     {
+                         e.CheckBoxGroup()
+                         .LabelPosition(CheckBoxGroupLabelPosition.Before)
+                         .Layout(CheckBoxGroupLayout.Horizontal)
+                         .Items(item =>
+                         {
+                             item.Add().Label("English").Value("1");
+                             item.Add().Label("Russian").Value("2");
+                             item.Add().Label("Spanish").Value("3");
+                         });
+                     });
+                    i.Add()
+                       .Field(f => f.City)
+                       .Label(l => l.Text("ComboBox:").Optional(true))
+                       .Editor(e =>
+                       {
+                           e.ComboBox()
+                               .HtmlAttributes(new { })
+                               .Placeholder("Select...")
+                               .DataTextField("ProductName")
+                               .DataValueField("ProductID")
+                               .HtmlAttributes(new { style = "width:100%" })
+                               .Height(520)
+                               .DataSource(source =>
+                               {
+                                   source.Read(read =>
+                                   {
+                                       read.Action("Items_GetProducts", "Form");
+                                   })
+                                   .ServerFiltering(true);
+                               });
+                       });
+                    i.Add()
+                       .Field(f => f.Subscription)
+                       .Label(l => l.Text("Switch:"))
+
+                       .Editor(e =>
+                       {
+                           e.Switch()
+                               .Messages(c => c.Checked("YES").Unchecked("NO"));
+                       }); ;
                 });
 
 
@@ -39,7 +102,7 @@
 
 <script>
     function onFormValidateField(e) {
-        $("#validation-success").html("");
+        $("#validation-success").html("OK");
     }
 
     function onFormSubmit(e) {
@@ -49,6 +112,7 @@
     }
 
     function onFormClear(e) {
-        $("#validation-success").html("");
+        $("#validation-success").html("Submited");
     }
+
 </script>
