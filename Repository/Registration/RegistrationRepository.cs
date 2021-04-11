@@ -8,9 +8,22 @@ namespace Telerik_SampleProject.Repository.Registration
 {
     public class RegistrationRepository : IRegistrationRepository
     {
+        public RegistrationRepository()
+        {
+
+        }
         public Task<bool> Registration(RegistrationModel Model)
         {
-            throw new NotImplementedException();
+            try
+            {
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return Task.FromResult(true);
         }
     }
 }
