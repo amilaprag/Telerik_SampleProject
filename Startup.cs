@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Telerik_SampleProject.Database;
+using Telerik_SampleProject.Repository.Registration;
 
 namespace Telerik_SampleProject
 {
@@ -39,6 +40,7 @@ namespace Telerik_SampleProject
 
             // Add Kendo UI services to the services container
             services.AddKendo();
+            services.Add(new ServiceDescriptor(typeof(IRegistrationRepository), typeof(RegistrationRepository), ServiceLifetime.Transient);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
