@@ -8,7 +8,7 @@ namespace Telerik_SampleProject.Database
 {
     public class DatabaseConntext : DbContext
     {
-        public DatabaseConntext()
+        public DatabaseConntext(DbContextOptions<DatabaseConntext> Options):base(Options)
         {
 
         }
