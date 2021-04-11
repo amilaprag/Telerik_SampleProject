@@ -1,0 +1,54 @@
+﻿
+
+<div class="demo-section k-content">
+    <div id="validation-success"></div>
+    @(Html.Kendo().Form<Telerik_SampleProject.Model.RegistrationModel>()
+        .Name("exampleForm")
+        .HtmlAttributes(new { action = "Index", method = "POST" })
+        .Validatable(v =>
+        {
+            v.ValidateOnBlur(true);
+            v.ValidationSummary(vs => vs.Enable(false));
+        })
+        .Items(items =>
+        {
+            items.AddGroup()
+                .Label("Personal Information")
+                .Layout("grid")
+                .Items(i =>
+                {
+                    i.Add()
+                         .Field(f => f.FirstName)
+                         .Label(l => l.Text("First Name:"));
+                    i.Add()
+                        .Field(f => f.Name)
+                        .Label(l => l.Text("Last Name:"));
+                    i.Add()
+                        .Field(f => f.RegDate)
+                        .Label(l => l.Text("Email:"));
+                    i.Add()
+                     .Field(f => f.Age)
+                     .Label(l => l.Text("Email:"));
+                });
+
+
+        })
+        .Events(ev => ev.ValidateField("onFormValidateField").Submit("onFormSubmit").Clear("onFormClear"))
+    )
+</div>
+
+<script>
+    function onFormValidateField(e) {
+        $("#validation-success").html("");
+    }
+
+    function onFormSubmit(e) {
+        e.success(data.updated, "Index")
+        e.preventDefault();
+        $("#validation-success").html("<div class='k-messagebox k-messagebox-success'>Form data is valid!</div>");
+    }
+
+    function onFormClear(e) {
+        $("#validation-success").html("");
+    }
+</script>
