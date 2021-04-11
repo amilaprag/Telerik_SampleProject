@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,20 +10,25 @@ namespace Telerik_SampleProject.Repository.Registration
 {
     public class RegistrationRepository : IRegistrationRepository
     {
-        public RegistrationRepository()
-        {
+        private readonly DbContext _Context;
+        private readonly ILogger<RegistrationRepository> _Logger;
 
+        public RegistrationRepository(DbContext Context,ILogger<RegistrationRepository> Logger)
+        {
+            _Context = Context;
+            _Logger = Logger;
         }
         public Task<bool> Registration(RegistrationModel Model)
         {
             try
             {
-
+                _Context.Add(Model);
             }
-            catch (Exception)
+            catch (Exception ErrorMessage)
             {
-
-                throw;
+                _Logger.LogWarning("Problem in data Insertion of Registration");
+                _Logger.LogError(ErrorMessage.StackTrace);
+                return Task.FromResult(false);
             }
             return Task.FromResult(true);
         }

@@ -9,7 +9,7 @@ namespace Telerik_SampleProject.Database
 {
     public class DatabaseConntext : DbContext
     {
-        public DbSet<RegistrationModel> Registraion { get; set; }
+        public DbSet<RegistrationModel> RegistraionTbl { get; set; }
         public DatabaseConntext(DbContextOptions<DatabaseConntext> Options):base(Options)
         {
 

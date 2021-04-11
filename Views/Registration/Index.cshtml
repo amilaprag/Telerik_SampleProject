@@ -63,27 +63,6 @@
                          });
                      });
                     i.Add()
-                       .Field(f => f.City)
-                       .Label(l => l.Text("ComboBox:").Optional(true))
-                       .Editor(e =>
-                       {
-                           e.ComboBox()
-                               .HtmlAttributes(new { })
-                               .Placeholder("Select...")
-                               .DataTextField("ProductName")
-                               .DataValueField("ProductID")
-                               .HtmlAttributes(new { style = "width:100%" })
-                               .Height(520)
-                               .DataSource(source =>
-                               {
-                                   source.Read(read =>
-                                   {
-                                       read.Action("Items_GetProducts", "Form");
-                                   })
-                                   .ServerFiltering(true);
-                               });
-                       });
-                    i.Add()
                        .Field(f => f.Subscription)
                        .Label(l => l.Text("Switch:"))
 
