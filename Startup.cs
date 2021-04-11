@@ -40,7 +40,7 @@ namespace Telerik_SampleProject
 
             // Add Kendo UI services to the services container
             services.AddKendo();
-            services.Add(new ServiceDescriptor(typeof(IRegistrationRepository), typeof(RegistrationRepository), ServiceLifetime.Transient);
+            services.Add(new ServiceDescriptor(typeof(IRegistrationRepository), typeof(RegistrationRepository), ServiceLifetime.Transient));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
