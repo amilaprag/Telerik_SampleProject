@@ -1,15 +1,4 @@
-﻿<head>
-    <title></title>
-    <link rel="stylesheet" href="styles/kendo.common.min.css" />
-    <link rel="stylesheet" href="styles/kendo.default.min.css" />
-    <link rel="stylesheet" href="styles/kendo.default.mobile.min.css" />
-
-    <script src="js/jquery.min.js"></script>
-
-
-    <script src="js/kendo.all.min.js"></script>
-
-</head>
+﻿
 
 <div class="k-content">
     <div id="validation-success"></div>
@@ -38,19 +27,19 @@
                      .Field(f => f.Age)
                      .Label(l => l.Text("Age:"))
                      .Editor(e =>
-                        {
-                            e.NumericTextBox();
-                        });
+                     {
+                         e.NumericTextBox();
+                     });
                     i.Add()
                        .Field(f => f.RegDate)
-                       .Label(l => l.Text("DateTimePicker:").Optional(true))
+                       .Label(l => l.Text("Birth Date :").Optional(true))
                        .Editor(e => e.DateTimePicker()
                            .HtmlAttributes(new { style = "width: 100%", title = "datetimepicker" })
                            .DateInput()
                        );
                     i.Add()
                      .Field(f => f.CivilStatus)
-                     .Label(l => l.Text("RadioGroup:"))
+                     .Label(l => l.Text("Civil Status:"))
                      .Editor(e =>
                      {
                          e.RadioGroup()
@@ -64,7 +53,7 @@
                      });
                     i.Add()
                      .Field(f => f.Langudage)
-                     .Label(l => l.Text("CheckBoxGroup:"))
+                     .Label(l => l.Text("Languages selected to learn:"))
                      .Editor(e =>
                      {
                          e.CheckBoxGroup()
@@ -79,13 +68,20 @@
                      });
                     i.Add()
                        .Field(f => f.Subscription)
-                       .Label(l => l.Text("Switch:"))
+                       .Label(l => l.Text("Do you have Subscription:"))
 
                        .Editor(e =>
                        {
                            e.Switch()
                                .Messages(c => c.Checked("YES").Unchecked("NO"));
-                       }); ;
+                       });
+                    i.Add()
+                      .Field(f => f.City)
+                      .Label(l => l.Text("City:").Optional(true))
+                      .Editor(e =>
+                      {
+                          e.MaskedTextBox();
+                      });
                 });
 
 
@@ -106,16 +102,5 @@
     function onFormClear(e) {
         $("#validation-success").html("");
     }
-
-    var validationSummary = $("#validation-summary");
-
-    $("Registration").submit(function (event) {
-
-        if (validator.validate()) {
-            validationSummary.html("<div class='k-messagebox k-messagebox-success'>Hooray! Your tickets has been booked!</div>");
-        } else {
-            validationSummary.html("<div class='k-messagebox k-messagebox-error'>Oops! There is invalid data in the form.</div>");
-        }
-    });
 
 </script>

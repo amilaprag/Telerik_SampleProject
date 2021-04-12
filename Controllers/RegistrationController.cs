@@ -37,7 +37,7 @@ namespace Telerik_SampleProject.Controllers
                 Status = await _RegistrationCaller.Registration(Model);
                 return View();
             }
-            return View();
+            return View(Model);
         }
 
     }
