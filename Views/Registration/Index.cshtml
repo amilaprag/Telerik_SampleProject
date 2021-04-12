@@ -8,7 +8,7 @@
         .Validatable(v =>
         {
             v.ValidateOnBlur(true);
-            v.ValidationSummary(vs => vs.Enable(true));
+            v.ValidationSummary(vs => vs.Enable(false));
         })
         .Items(items =>
         {
@@ -18,11 +18,11 @@
                 .Items(i =>
                 {
                     i.Add()
-                         .Field(f => f.FirstName)
-                         .Label(l => l.Text("First Name:"));
+                         .Field(f => f.Name)
+                         .Label(l => l.Text("Name:"));
                     i.Add()
-                        .Field(f => f.Name)
-                        .Label(l => l.Text("Last Name:"));
+                        .Field(f => f.FirstName)
+                        .Label(l => l.Text("First Name:"));
                     i.Add()
                      .Field(f => f.Age)
                      .Label(l => l.Text("Age:"))
@@ -92,7 +92,7 @@
 
 <script>
     function onFormValidateField(e) {
-        $("#validation-success").html("");
+        $("#validation-success").html("valid");
     }
 
     function onFormSubmit(e) {

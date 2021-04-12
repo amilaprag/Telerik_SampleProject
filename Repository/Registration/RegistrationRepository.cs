@@ -24,7 +24,7 @@ namespace Telerik_SampleProject.Repository.Registration
             try
             {
                 _Context.Add(Model);
-                _Context.SaveChangesAsync();
+                _Context.SaveChanges();
             }
             catch (Exception ErrorMessage)
             {

@@ -21,7 +21,6 @@ namespace Telerik_SampleProject.Controllers
             _Logger = Logger;
         }
 
-        // GET: RegistrationController
         public ActionResult Index()
         {
             return View();
@@ -35,7 +34,10 @@ namespace Telerik_SampleProject.Controllers
             if (ModelState.IsValid)
             {
                 Status = await _RegistrationCaller.Registration(Model);
-                return View();
+                if (Status)
+                {
+                    return View();
+                }
             }
             return View(Model);
         }

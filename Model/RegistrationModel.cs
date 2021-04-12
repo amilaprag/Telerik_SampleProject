@@ -15,7 +15,7 @@ namespace Telerik_SampleProject.Model
         public int RegistrationModelID { get; set; }
 
         #region Name
-        [Required(ErrorMessage = "Please select date")]
+        [Required]
         [StringLength(50, MinimumLength = 6,ErrorMessage = "First Name should be minimum 6 characters and a maximum of 50 characters")]
         [DataType(DataType.Text)]
         [Column("Reg_Name")]
@@ -31,7 +31,7 @@ namespace Telerik_SampleProject.Model
 
         #region FirstName
         [Column("Reg_FirstName")]
-        [Required(ErrorMessage = "{0} is required")]
+        [Required(ErrorMessage = "FirstName is required")]
         public string FirstName { get; set; }
         #endregion
 
@@ -49,14 +49,13 @@ namespace Telerik_SampleProject.Model
         #endregion
 
         #region Langudage
-        [Required(ErrorMessage = "Please select launges")]
+        [Required(ErrorMessage = "Please select languages")]
         [DataType(DataType.Text)]
         [Column("Reg_Language")]
         public string Langudage { get; set; }
         #endregion
 
         #region Subscription
-        [Required(ErrorMessage = "Please select date")]
         [Column("Reg_Subscription")]
         public bool Subscription { get; set; }
         #endregion
