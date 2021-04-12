@@ -4,16 +4,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Telerik_SampleProject.Database;
 using Telerik_SampleProject.Model;
 
 namespace Telerik_SampleProject.Repository.Registration
 {
     public class RegistrationRepository : IRegistrationRepository
     {
-        private readonly DbContext _Context;
+        private readonly DatabaseConntext _Context;
         private readonly ILogger<RegistrationRepository> _Logger;
 
-        public RegistrationRepository(DbContext Context,ILogger<RegistrationRepository> Logger)
+        public RegistrationRepository(DatabaseConntext Context,ILogger<RegistrationRepository> Logger)
         {
             _Context = Context;
             _Logger = Logger;

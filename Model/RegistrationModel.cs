@@ -15,6 +15,7 @@ namespace Telerik_SampleProject.Model
         public int RegistrationModelID { get; set; }
 
         #region Name
+        [Required(ErrorMessage = "Please select date")]
         [StringLength(50, MinimumLength = 3,ErrorMessage = "First Name should be minimum 3 characters and a maximum of 50 characters")]
         [DataType(DataType.Text)]
         [Column("Reg_Name")]
@@ -36,7 +37,7 @@ namespace Telerik_SampleProject.Model
 
         #region Date
         [Required(ErrorMessage = "Please select date")]
-        [DataType(DataType.Text)]
+        [DataType(DataType.Date)]
         [Column("Reg_Date")]
         public DateTime RegDate { get; set; }
         #endregion
@@ -48,6 +49,7 @@ namespace Telerik_SampleProject.Model
         #endregion
 
         #region Langudage
+        [Required(ErrorMessage = "Please select date")]
         [DataType(DataType.Text)]
         [Column("Reg_Language")]
         public string Langudage { get; set; }
@@ -60,7 +62,7 @@ namespace Telerik_SampleProject.Model
         #endregion
 
         #region City
-        // [Required(ErrorMessage = "Please select a city")]
+        [Required(ErrorMessage = "Please select a city")]
         [Column("Reg_City")]
         public String City { get; set; }
         #endregion

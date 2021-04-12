@@ -27,13 +27,15 @@ namespace Telerik_SampleProject.Controllers
             return View();
         }
 
+
         [HttpPost]
-        public async Task<ActionResult> IndexAsync(RegistrationModel Model)
+        public async Task<ActionResult> Index(RegistrationModel Model)
         {
             bool Status = false;
             if (ModelState.IsValid)
             {
-                Status= await  _RegistrationCaller.Registration(Model);
+                Status = await _RegistrationCaller.Registration(Model);
+                return View();
             }
             return View();
         }
