@@ -16,7 +16,7 @@ namespace Telerik_SampleProject.Model
 
         #region Name
         [Required(ErrorMessage = "Please select date")]
-        [StringLength(50, MinimumLength = 3,ErrorMessage = "First Name should be minimum 3 characters and a maximum of 50 characters")]
+        [StringLength(50, MinimumLength = 6,ErrorMessage = "First Name should be minimum 6 characters and a maximum of 50 characters")]
         [DataType(DataType.Text)]
         [Column("Reg_Name")]
         public string Name { get; set; }
@@ -36,20 +36,20 @@ namespace Telerik_SampleProject.Model
         #endregion
 
         #region Date
-        [Required(ErrorMessage = "Please select date")]
-        [DataType(DataType.Date)]
+        [Required(ErrorMessage = "Please add Register Date")]
+        [DataType(DataType.DateTime)]
         [Column("Reg_Date")]
         public DateTime RegDate { get; set; }
         #endregion
 
         #region CivilStatus
-        [Required(ErrorMessage = "Please select date")]
+        [Required(ErrorMessage = "Please select CivilStatus")]
         [Column("Reg_CivilStatus")]
         public bool CivilStatus { get; set; }
         #endregion
 
         #region Langudage
-        [Required(ErrorMessage = "Please select date")]
+        [Required(ErrorMessage = "Please select launges")]
         [DataType(DataType.Text)]
         [Column("Reg_Language")]
         public string Langudage { get; set; }
@@ -62,7 +62,6 @@ namespace Telerik_SampleProject.Model
         #endregion
 
         #region City
-        [Required(ErrorMessage = "Please select a city")]
         [Column("Reg_City")]
         public String City { get; set; }
         #endregion
